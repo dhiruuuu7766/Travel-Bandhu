@@ -1,0 +1,73 @@
+<% layout('/layouts/boilerplate') -%>
+<% block('scripts').append('<script src="/js/listings.js" defer></script>') %>
+
+<section class="listing-tools" aria-label="Search and filter listings">
+  <form id="listing-search-form" class="listing-search-form" role="search">
+    <label class="visually-hidden" for="listing-search">Search destinations or stays</label>
+    <input
+      id="listing-search"
+      class="form-control"
+      type="search"
+      placeholder="Search destinations or stays"
+      autocomplete="off"
+    />
+    <button class="btn btn-search" type="submit">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      Search
+    </button>
+  </form>
+
+  <div class="listing-filter-row">
+    <nav id="filters" class="listing-category-filters" aria-label="Filter by category">
+      <button class="filter is-active" type="button" data-category="all" aria-pressed="true">
+        <span class="filter-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+        <span>All stays</span>
+      </button>
+      <% for (const category of listingCategories) { %>
+      <button class="filter" type="button" data-category="<%= category.value %>" aria-pressed="false">
+        <span class="filter-icon"><i class="fa-solid <%= category.icon %>" aria-hidden="true"></i></span>
+        <span><%= category.label %></span>
+      </button>
+      <% } %>
+    </nav>
+
+    <label class="tax-toggle" for="tax-switch">
+      <span>Display total after taxes</span>
+      <input class="form-check-input" type="checkbox" role="switch" id="tax-switch" />
+    </label>
+  </div>
+</section>
+
+<p id="listing-results-message" class="listing-results-message" role="status" aria-live="polite"></p>
+
+<div id="listing-grid" class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 mt-3">
+  <% for (const listing of allListings) { %>
+  <div
+    class="col mb-4 listing-result"
+    data-category="<%= listing.category || '' %>"
+    data-search="<%= [listing.title, listing.location, listing.country].filter(Boolean).join(' ').toLowerCase() %>"
+  >
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+      <div class="card listing-card">
+        <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>" style="height: 20rem;">
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b>
+            <br>
+            <span class="listing-price" data-price="<%= listing.price %>">
+              <span class="price-base"><%= listing.price.toLocaleString('en-IN', { style: 'currency', currency: 'INR' }) %></span>
+              <span class="tax-info" hidden></span>
+            </span>
+            <span class="price-period">/ night</span>
+            <br />
+            <%= listing.location %>
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <% } %>
+</div>
+
+<p id="listing-empty-state" class="listing-empty-state" hidden>No listings match your search and category. Try another search or choose a different category.</p>
