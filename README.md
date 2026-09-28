@@ -1,6 +1,6 @@
-# TravalBandhu
+# Travel-Bandhu
 
-TravalBandhu is a travel-stay listing web application built with Node.js, Express, EJS, MongoDB, and Mongoose. Users can browse and search stays, create accounts, publish listings, and leave reviews.
+TravelBandhu is a travel-stay listing web application built with Node.js, Express, EJS, MongoDB, and Mongoose. Users can browse and search stays, create accounts, publish listings, and leave reviews.
 
 ## Features
 
