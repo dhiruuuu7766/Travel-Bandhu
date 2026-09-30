@@ -28,6 +28,193 @@ html[data-theme="dark"] {
 .container {
   flex: 1;
 }
+
+.home-page {
+  padding-top: 1.5rem;
+}
+
+.home-hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(31rem, 68vh, 42rem);
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  isolation: isolate;
+  background: #203832;
+  color: #fff;
+}
+
+.home-hero::after {
+  position: absolute;
+  z-index: -1;
+  background: linear-gradient(90deg, rgb(13 29 25 / 88%) 0%, rgb(13 29 25 / 70%) 48%, rgb(13 29 25 / 12%) 100%);
+  content: "";
+  inset: 0;
+}
+
+.home-hero-image {
+  position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  inset: 0;
+}
+
+.home-hero-content {
+  width: min(100%, 45rem);
+  padding: clamp(2rem, 7vw, 5.5rem);
+}
+
+.home-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.35rem;
+  color: #f3c98a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-hero h1 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.03;
+}
+
+.home-hero h1 span {
+  color: #f3c98a;
+}
+
+.home-intro {
+  max-width: 34rem;
+  margin: 1.4rem 0 0;
+  color: rgb(255 255 255 / 86%);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.75;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.home-primary-link,
+.home-secondary-link {
+  display: inline-flex;
+  min-height: 3.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.home-primary-link {
+  padding: 0.85rem 1.5rem;
+  background: #f3c98a;
+  color: #202a25;
+}
+
+.home-primary-link:hover,
+.home-primary-link:focus-visible {
+  transform: translateY(-2px);
+  background: #ffdaa0;
+  color: #202a25;
+}
+
+.home-secondary-link {
+  color: #fff;
+}
+
+.home-secondary-link:hover,
+.home-secondary-link:focus-visible {
+  color: #f3c98a;
+}
+
+.home-travel-note {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 3rem;
+}
+
+.home-note-icon {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 38%);
+  border-radius: 50%;
+  color: #f3c98a;
+}
+
+.home-travel-note p {
+  margin: 0;
+  color: rgb(255 255 255 / 78%);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.home-travel-note strong {
+  color: #fff;
+}
+
+.home-image-caption {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.2rem;
+  margin: 0;
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.8rem;
+}
+
+.home-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  padding: 2.75rem 0 1rem;
+}
+
+.home-highlights > div {
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.home-highlight-icon {
+  position: absolute;
+  top: 0.15rem;
+  left: 0;
+  color: #b95837;
+  font-size: 1.45rem;
+}
+
+.home-highlights h2 {
+  margin: 0 0 0.45rem;
+  color: var(--app-text);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.home-highlights p {
+  margin: 0;
+  color: var(--app-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 /* Navbar */
 .navbar {
   height: 5rem;
@@ -427,6 +614,42 @@ html[data-theme="dark"] .leaflet-popup-tip {
 }
 
 @media (max-width: 576px) {
+  .home-page {
+    padding-top: 0.75rem;
+  }
+
+  .home-hero {
+    min-height: 36rem;
+    border-radius: 1rem;
+  }
+
+  .home-hero::after {
+    background: linear-gradient(90deg, rgb(13 29 25 / 85%), rgb(13 29 25 / 58%));
+  }
+
+  .home-hero-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(2.7rem, 12vw, 4rem);
+  }
+
+  .home-travel-note {
+    margin-top: 2rem;
+  }
+
+  .home-image-caption {
+    right: 1rem;
+    bottom: 0.8rem;
+  }
+
+  .home-highlights {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 2rem;
+  }
+
   .listing-filter-row {
     align-items: stretch;
     flex-direction: column;

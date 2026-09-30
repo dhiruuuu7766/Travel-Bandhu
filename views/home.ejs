@@ -1,0 +1,50 @@
+<% layout('/layouts/boilerplate') -%>
+<% block('head').append('<meta name="description" content="Find a stay that makes your next getaway unforgettable with TravelBandhu.">') %>
+
+<main class="home-page">
+  <section class="home-hero" aria-labelledby="home-title">
+    <img
+      class="home-hero-image"
+      src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85"
+      alt=""
+      fetchpriority="high"
+    />
+    <div class="home-hero-content">
+      <p class="home-eyebrow"><i class="fa-solid fa-compass" aria-hidden="true"></i> Make room for wonder</p>
+      <h1 id="home-title">The world is waiting. <span>Find your somewhere.</span></h1>
+      <p class="home-intro">
+        From quiet mountain mornings to sun-soaked coastal escapes, discover a stay that makes the journey yours.
+      </p>
+      <div class="home-actions">
+        <a class="home-primary-link" href="/listings">
+          Explore stays
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a class="home-secondary-link" href="/listings/new">Share your place</a>
+      </div>
+      <div class="home-travel-note">
+        <span class="home-note-icon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>
+        <p><strong>Stay somewhere memorable.</strong><br />Your next favorite place is closer than you think.</p>
+      </div>
+    </div>
+    <p class="home-image-caption"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Find your kind of quiet</p>
+  </section>
+
+  <section class="home-highlights" aria-label="Discover TravelBandhu">
+    <div>
+      <span class="home-highlight-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
+      <h2>Stays with character</h2>
+      <p>Explore welcoming homes in places worth the trip.</p>
+    </div>
+    <div>
+      <span class="home-highlight-icon"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></span>
+      <h2>Made for exploring</h2>
+      <p>Find a fresh perspective, one destination at a time.</p>
+    </div>
+    <div>
+      <span class="home-highlight-icon"><i class="fa-solid fa-suitcase-rolling" aria-hidden="true"></i></span>
+      <h2>Your next chapter</h2>
+      <p>Start planning a getaway you’ll remember for years.</p>
+    </div>
+  </section>
+</main>

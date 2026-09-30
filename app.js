@@ -117,6 +117,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req, res) => {
+  res.render("home.ejs");
+});
+
 app.use("/demoUser", async (req, res) => {
   let fakeUser = new User({
     email: "studeTTnt@gmail.com",
