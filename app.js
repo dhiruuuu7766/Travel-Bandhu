@@ -63,17 +63,19 @@ if (dbUrl) {
   });
 }
 
+const port = Number(process.env.PORT) || 8080;
+
+function startServer() {
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`Server is listening on ${port}`);
+  });
+}
+
 main()
-  .then(() => {
-    app.listen(8080, () => {
-      console.log("Server is listening on 8080");
-    });
-  })
+  .then(startServer)
   .catch((err) => {
     console.log("MongoDB connection error:", err);
-    app.listen(8080, () => {
-      console.log("Server is listening on 8080");
-    });
+    startServer();
   });
 
 app.set("view engine", "ejs");
