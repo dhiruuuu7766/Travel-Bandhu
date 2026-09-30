@@ -35,7 +35,7 @@ TravelBandhu is a travel-stay listing web application built with Node.js, Expres
    node app.js
    ```
 
-4. Open [http://localhost:8080](http://localhost:8080).
+4. Open [http://localhost:8080](https://travelbandhu.onrender.com).
 
 ## Environment variables
 
