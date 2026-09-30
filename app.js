@@ -1,7 +1,3 @@
-const dns = require("dns");
-
-dns.setServers(["8.8.8.8", "1.1.1.1"]);
-
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
@@ -58,25 +54,12 @@ const sessionStore = dbUrl
   : new session.MemoryStore();
 
 if (dbUrl) {
-  sessionStore.on("error", () => {
-    console.log("ERROR in MONGO SESSION STORE");
+  sessionStore.on("error", (error) => {
+    console.error("MongoDB session store error:", error.message);
   });
 }
 
 const port = Number(process.env.PORT) || 8080;
-
-function startServer() {
-  app.listen(port, "0.0.0.0", () => {
-    console.log(`Server is listening on ${port}`);
-  });
-}
-
-main()
-  .then(startServer)
-  .catch((err) => {
-    console.log("MongoDB connection error:", err);
-    startServer();
-  });
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -146,4 +129,12 @@ app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something was wrong" } = err;
 
   res.status(statusCode).render("error.ejs", { err });
+});
+
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server is listening on ${port}`);
+});
+
+main().catch((err) => {
+  console.error("MongoDB connection failed:", err.message);
 });
